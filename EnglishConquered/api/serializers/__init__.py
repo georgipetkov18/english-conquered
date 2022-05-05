@@ -1,1 +1,2 @@
 from .grammar_serializer import GrammarSerializer
+from .module_serializer import ModuleSerializer

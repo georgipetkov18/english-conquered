@@ -1,1 +1,2 @@
 from .grammar_repository import GrammarRepository
+from .module_repository import ModuleRepository

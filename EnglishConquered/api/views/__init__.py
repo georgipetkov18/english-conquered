@@ -1,1 +1,2 @@
-from .grammar import get_grammars
+from .grammar import GrammarView, GrammarDetailView
+from .module import ModuleView, ModuleDetailView
