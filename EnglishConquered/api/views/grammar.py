@@ -37,6 +37,7 @@ class GrammarDetailView(views.APIView):
         super().__init__(**kwargs)
         self.grammar_repo = GrammarRepository()
 
+
     def get(self, request, id, format=None):
         try:
             grammar = self.grammar_repo.get(id)
@@ -46,4 +47,27 @@ class GrammarDetailView(views.APIView):
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+
+    def put(self, request, id, format=None):
+        subject = request.data.get('subject')
+        content = request.data.get('content')
+        unit = request.data.get('unit')
+        if subject == None or content == None or unit == None:
+            return JsonResponse({'error': 'The fields: subject, content and unit are required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            updated_grammar = self.grammar_repo.update(id, Grammar(subject, content, unit))
+            return JsonResponse({'updated_grammar': GrammarSerializer(updated_grammar).data}, status=status.HTTP_200_OK)
+ 
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
+
+    def delete(self, request, id, format=None):
+        try:
+            self.grammar_repo.delete(id)
+            return JsonResponse({'message': 'Grammar deleted successfully'}, status=status.HTTP_200_OK)
+ 
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
