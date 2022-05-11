@@ -7,11 +7,11 @@ class GrammarRepository:
 
 
     def get(self, id):
-        grammar = Grammar.objects.filter(id=id)[0]
-        if not grammar:
+        grammars = Grammar.objects.filter(id=id)
+        if not grammars:
             raise Exception('Invalid id was provided')
 
-        return grammar
+        return grammars[0]
 
 
     def add(self, grammar: models.Grammar):

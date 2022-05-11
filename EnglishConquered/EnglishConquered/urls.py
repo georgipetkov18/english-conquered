@@ -9,4 +9,6 @@ urlpatterns = [
     path('modules/<str:id>/', ModuleDetailView.as_view()),
     path('grammar/', GrammarView.as_view()),
     path('grammar/<str:id>/', GrammarDetailView.as_view()),
+    path('vocabulary/', VocabularyView.as_view()),
+    path('vocabulary/<str:id>/', VocabularyDetailView.as_view()),
 ]

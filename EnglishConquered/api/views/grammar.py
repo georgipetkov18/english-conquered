@@ -32,6 +32,7 @@ class GrammarView(views.APIView):
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
+
 class GrammarDetailView(views.APIView):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

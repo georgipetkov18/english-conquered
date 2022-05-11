@@ -7,11 +7,11 @@ class ModuleRepository:
 
 
     def get(self, id):
-        module = Module.objects.filter(id=id)[0]
-        if not module:
+        modules = Module.objects.filter(id=id)
+        if not modules:
             raise Exception('Invalid id was provided')
 
-        return module
+        return modules[0]
 
 
     def add(self, module: models.Module):

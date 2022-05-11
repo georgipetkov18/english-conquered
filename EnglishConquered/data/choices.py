@@ -1,7 +1,7 @@
 from django.db import models
 
 class VocabularyType(models.TextChoices):
-        WORD = 'Word'
-        COLLOCATION = 'Collocation'
-        PHRASAL_VERB = 'Phrasal verb'
-        IDIOM = 'Idiom'
+        WORD = 'word'
+        COLLOCATION = 'collocation'
+        PHRASAL_VERB = 'phrasal verb'
+        IDIOM = 'idiom'
