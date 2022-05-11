@@ -25,10 +25,18 @@ class ModuleRepository:
         if module.unit <= 0:
             raise Exception('Unit must be a positive integer')
 
-        Module.objects.filter(id=id).update(unit=module.unit)
+        modules = Module.objects.filter(id=id)
+        if not modules:
+            raise Exception('Invalid id was provided')
+
+        modules.update(unit=module.unit)
         return Module.objects.filter(id=id)[0]
 
 
     def delete(self, id):
-        Module.objects.filter(id=id).delete()
+        modules = Module.objects.filter(id=id)
+        if not modules:
+            raise Exception('Invalid id was provided')
+
+        modules.delete()
 

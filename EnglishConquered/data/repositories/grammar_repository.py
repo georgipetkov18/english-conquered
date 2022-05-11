@@ -33,11 +33,19 @@ class GrammarRepository:
         if not modules:
             raise Exception(f'Module of unit {grammar.module} does not exist')
 
-        Grammar.objects.filter(id=id).update(subject=grammar.subject, content=grammar.content, module=modules[0])
+        grammars = Grammar.objects.filter(id=id)
+        if not grammars:
+            raise Exception('Invalid id was provided')
+
+        grammars.update(subject=grammar.subject, content=grammar.content, module=modules[0])
         return Grammar.objects.filter(id=id)[0]
 
 
     def delete(self, id):
-        Grammar.objects.filter(id=id).delete()
+        grammars = Grammar.objects.filter(id=id)
+        if not grammars:
+            raise Exception('Invalid id was provided')
+
+        grammars.delete()
 
 
